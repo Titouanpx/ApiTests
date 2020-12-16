@@ -1,19 +1,23 @@
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.json.*;
 
-public class WotApi {
+public class WotApi extends AbstractApi{
     final String APPLICATION_ID = "5585aac07c7c77014e635f6da4c2f32d";
 
     public JSONObject jsonReader(URL url) {
         try {
-            InputStream input = url.openStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String jsonText = reader.readLine();
             return new JSONObject(jsonText);
+
         } catch (Exception e) {
             System.out.println(e.toString());
             return null;
