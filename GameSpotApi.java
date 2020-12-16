@@ -1,18 +1,9 @@
-import java.io.*;
-import java.lang.reflect.Array;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Document;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 public class GameSpotApi extends AbstractApi{
     final String API_KEY = "c72d9db428845fb697a0efc06c3af8be96e77ac0";
